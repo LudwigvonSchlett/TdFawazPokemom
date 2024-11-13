@@ -5,13 +5,13 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(TdFawazPokemon main.cpp
         src/Card.cpp
-        header/Card.h
+        headers/Card.h
         src/PokemonCard.cpp
-        header/PokemonCard.h
+        headers/PokemonCard.h
         src/EnergyCard.cpp
-        header/EnergyCard.h
+        headers/EnergyCard.h
         src/TrainerCard.cpp
-        header/TrainerCard.h
+        headers/TrainerCard.h
         src/Player.cpp
-        header/Player.h
+        headers/Player.h
 )
