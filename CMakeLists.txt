@@ -4,12 +4,14 @@ project(TdFawazPokemon)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(TdFawazPokemon main.cpp
-        Card.cpp
-        Card.h
-        PokemonCard.cpp
-        PokemonCard.h
-        EnergyCard.cpp
-        EnergyCard.h
-        TrainerCard.cpp
-        TrainerCard.h
+        src/Card.cpp
+        header/Card.h
+        src/PokemonCard.cpp
+        header/PokemonCard.h
+        src/EnergyCard.cpp
+        header/EnergyCard.h
+        src/TrainerCard.cpp
+        header/TrainerCard.h
+        src/Player.cpp
+        header/Player.h
 )

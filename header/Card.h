@@ -10,11 +10,13 @@
 class Card {
 
     public:
-        const std::string cardName;
-
         Card(std::string _cardName);
         virtual ~Card() = default;
+
         virtual void displayInfo() const = 0;
+
+    protected:
+        const std::string cardName;
 
 };
 

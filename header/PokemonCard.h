@@ -15,9 +15,7 @@ class PokemonCard: public Card {
         PokemonCard(std::string _cardName, std::string _pokemonType, std::string _familyName, int _evolutionLevel, int _maxHP,
             int _costAttack1, std::string _attackDesc1, int _attackDamage1,
             int _costAttack2, std::string _attackDesc2, int _attackDamage2);
-
         ~PokemonCard() = default;
-
 
         void displayInfo() const override;
 

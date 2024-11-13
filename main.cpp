@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "EnergyCard.h"
-#include "PokemonCard.h"
-#include "TrainerCard.h"
+#include "header/EnergyCard.h"
+#include "header/PokemonCard.h"
+#include "header/TrainerCard.h"
 
 
 int main() {
