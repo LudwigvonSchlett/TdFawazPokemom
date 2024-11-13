@@ -16,6 +16,9 @@ class Player {
         Player(std::string _playerName);
         ~Player() = default;
 
+        void addCardToBench(Card* cardPtr);
+        void activatePokemonCard(int cardIndex);
+
     protected:
         const std::string playerName;
         std::vector<Card*> benchCard;
