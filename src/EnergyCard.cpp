@@ -15,6 +15,7 @@ EnergyCard::EnergyCard(std::string _energyType):
 }
 
 void EnergyCard::displayInfo() const {
-    std::cout << cardName << std::endl;
-    std::cout << energyType << std::endl;
+    std::cout << "Energy Card  : -- ";
+    std::cout << "Card name : " << cardName;
+    std::cout << ", Type : " << energyType;
 }

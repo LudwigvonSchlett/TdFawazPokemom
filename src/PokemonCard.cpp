@@ -24,12 +24,12 @@ PokemonCard::PokemonCard(std::string _cardName, std::string _pokemonType, std::s
 }
 
 void PokemonCard::displayInfo() const {
-    std::cout << cardName << std::endl;
-    std::cout << pokemonType << std::endl;
-    std::cout << familyName << std::endl;
-    std::cout << evolutionLevel << std::endl;
-    std::cout << maxHP << std::endl;
-    std::cout << hp << std::endl;
-    std::cout << energy << std::endl;
+    std::cout << "Pokemon Card : -- ";
+    std::cout << "Pokemon name : " << cardName;
+    std::cout << ", Type : " << pokemonType;
+    std::cout << ", Evolution Level : " << evolutionLevel;
+    std::cout << " of the family \"" << familyName << "\"";
+    std::cout << ", HP : " << hp << "/" << maxHP;
+    //std::cout << energy << std::endl;
 }
 

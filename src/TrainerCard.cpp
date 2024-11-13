@@ -15,7 +15,8 @@ TrainerCard::TrainerCard(std::string _cardName, std::string _trainerEffect):
 }
 
 void TrainerCard::displayInfo() const {
-    std::cout << cardName << std::endl;
-    std::cout << trainerEffect << std::endl;
+    std::cout << "Trainer Card : -- ";
+    std::cout << "Trainer name : " << cardName;
+    std::cout << ", Effect : " << trainerEffect;
 }
 
