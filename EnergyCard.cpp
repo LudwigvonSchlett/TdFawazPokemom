@@ -8,7 +8,7 @@
 #include <ostream>
 
 EnergyCard::EnergyCard(std::string _energyType):
-    cardName("Energy"),
+    Card(("Energy")),
     energyType(_energyType)
 {
 

@@ -23,7 +23,6 @@ class PokemonCard: public Card {
 
 
     protected:
-        const std::string cardName;
         const std::string pokemonType;
         const std::string familyName;
         const int evolutionLevel;

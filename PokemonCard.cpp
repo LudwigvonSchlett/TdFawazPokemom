@@ -10,15 +10,15 @@
 PokemonCard::PokemonCard(std::string _cardName, std::string _pokemonType, std::string _familyName, int _evolutionLevel, int _maxHP,
                          int _costAttack1, std::string _attackDesc1, int _attackDamage1,
                          int _costAttack2, std::string _attackDesc2, int _attackDamage2):
-
-    cardName(_cardName),
+    Card((_cardName)),
     pokemonType(_pokemonType),
     familyName(_familyName),
     evolutionLevel(_evolutionLevel),
     maxHP(_maxHP),
     hp(_maxHP),
     energy(0),
-    attacks([std::tuple(_costAttack1, _attackDesc1, _attackDamage1) std::tuple(_costAttack2, _attackDamage2, _attackDamage2)])
+    attacks({std::make_tuple(_costAttack1, _attackDesc1, _attackDamage1),
+               std::make_tuple(_costAttack2, _attackDesc2, _attackDamage2)})
 {
 
 }

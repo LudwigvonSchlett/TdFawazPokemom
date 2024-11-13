@@ -3,3 +3,9 @@
 //
 
 #include "Card.h"
+
+Card::Card(std::string _cardName) :
+    cardName(_cardName)
+{
+
+}

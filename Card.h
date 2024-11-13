@@ -12,6 +12,7 @@ class Card {
     public:
         const std::string cardName;
 
+        Card(std::string _cardName);
         virtual ~Card() = default;
         virtual void displayInfo() const = 0;
 
