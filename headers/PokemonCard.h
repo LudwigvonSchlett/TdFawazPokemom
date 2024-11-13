@@ -19,8 +19,11 @@ class PokemonCard: public Card {
 
         void displayInfo() const override;
 
+        void addEnergy();
+        std::string getEnergyType() const;
 
-    protected:
+
+    private:
         const std::string pokemonType;
         const std::string familyName;
         const int evolutionLevel;

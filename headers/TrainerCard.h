@@ -15,7 +15,7 @@ class TrainerCard: public Card {
 
         void displayInfo() const override;
 
-    protected:
+    private:
         const std::string trainerEffect;
 
 

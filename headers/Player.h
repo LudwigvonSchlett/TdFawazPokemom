@@ -16,10 +16,14 @@ class Player {
         Player(std::string _playerName);
         ~Player() = default;
 
+        void displayBench() const;
+        void displayAction() const;
+
         void addCardToBench(Card* cardPtr);
         void activatePokemonCard(int cardIndex);
+        void attachEnergyCard(int cardIndex, int pokemonIndex);
 
-    protected:
+    private:
         const std::string playerName;
         std::vector<Card*> benchCard;
         std::vector<PokemonCard*> actionCard;

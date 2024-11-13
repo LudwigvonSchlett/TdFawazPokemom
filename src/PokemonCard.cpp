@@ -33,3 +33,10 @@ void PokemonCard::displayInfo() const {
     //std::cout << energy << std::endl;
 }
 
+void PokemonCard::addEnergy() {
+    energy++;
+}
+
+std::string PokemonCard::getEnergyType() const {
+    return  pokemonType;
+}

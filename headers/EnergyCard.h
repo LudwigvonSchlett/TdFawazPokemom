@@ -14,8 +14,9 @@ class EnergyCard: public Card {
         ~EnergyCard() = default;
 
         void displayInfo() const override;
+        std::string getEnergyType() const;
 
-    protected:
+    private:
         const std::string energyType;
 
 
