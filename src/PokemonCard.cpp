@@ -7,6 +7,8 @@
 #include <iostream>
 #include <ostream>
 
+using Attack = std::tuple<int, std::string, int>;
+
 PokemonCard::PokemonCard(std::string _cardName, std::string _pokemonType, std::string _familyName, int _evolutionLevel, int _maxHP,
                          int _costAttack1, std::string _attackDesc1, int _attackDamage1,
                          int _costAttack2, std::string _attackDesc2, int _attackDamage2):
@@ -17,8 +19,8 @@ PokemonCard::PokemonCard(std::string _cardName, std::string _pokemonType, std::s
     maxHP(_maxHP),
     hp(_maxHP),
     energy(0),
-    attacks({std::make_tuple(_costAttack1, _attackDesc1, _attackDamage1),
-               std::make_tuple(_costAttack2, _attackDesc2, _attackDamage2)})
+    attacks({Attack(_costAttack1, _attackDesc1, _attackDamage1),
+               Attack(_costAttack2, _attackDesc2, _attackDamage2)})
 {
 
 }
@@ -53,7 +55,7 @@ void PokemonCard::attack(int attackIndex, PokemonCard* pokemonCard) {
         throw std::out_of_range("Invalid attack index");
     }
 
-    std::tuple<int,std::string,int> attack = attacks[attackIndex];
+    Attack attack = attacks[attackIndex];
 
     if (std::get<0>(attack) > energy) {
         throw std::invalid_argument("Pokemon doesn't have enough energy");

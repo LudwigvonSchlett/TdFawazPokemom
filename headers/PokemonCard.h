@@ -12,6 +12,8 @@
 class PokemonCard: public Card {
 
     public:
+        using Attack = std::tuple<int, std::string, int>;
+
         PokemonCard(std::string _cardName, std::string _pokemonType, std::string _familyName, int _evolutionLevel, int _maxHP,
             int _costAttack1, std::string _attackDesc1, int _attackDamage1,
             int _costAttack2, std::string _attackDesc2, int _attackDamage2);
@@ -30,8 +32,8 @@ class PokemonCard: public Card {
         const int maxHP;
         int hp;
         int energy;
-        std::vector<std::tuple<int, std::string, int>> attacks;
-
+        //std::vector<std::tuple<int, std::string, int>> attacks;
+        std::vector<Attack> attacks;
 
 };
 
