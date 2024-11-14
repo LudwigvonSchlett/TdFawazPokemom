@@ -57,4 +57,10 @@ int main() {
     player2.displayBench();
     cout << endl;
     player2.displayAction();
+
+    player1.attack(0 , 0, player2, 0);
+    cout << endl;
+    player2.displayAction();
+
+    return 0;
 }

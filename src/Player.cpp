@@ -3,12 +3,10 @@
 //
 
 #include "../headers/Player.h"
+#include "../headers/EnergyCard.h"
 
 #include <iostream>
 #include <ostream>
-
-#include "../headers/EnergyCard.h"
-
 #include <stdexcept>
 
 Player::Player(std::string _playerName):
@@ -39,11 +37,25 @@ void Player::displayAction() const {
 
 }
 
+PokemonCard *Player::getPokemonCardPtr( int pokemonIndex) {
+
+    if (pokemonIndex < 0 || pokemonIndex >= actionCard.size()) {
+        throw std::out_of_range("Invalid pokemeon index");
+    }
+
+    PokemonCard* pokemonCardPtr = actionCard[pokemonIndex];
+
+    return pokemonCardPtr;
+
+}
+
+
 void Player::addCardToBench(Card* cardPtr) {
     benchCard.push_back(cardPtr);
 }
 
 void Player::activatePokemonCard(int cardIndex) {
+
     if (cardIndex < 0 || cardIndex >= benchCard.size()) {
         throw std::out_of_range("Invalid card index");
     }
@@ -63,17 +75,13 @@ void Player::attachEnergyCard(int cardIndex, int pokemonIndex) {
         throw std::out_of_range("Invalid card index");
     }
 
-    if (pokemonIndex < 0 || pokemonIndex >= actionCard.size()) {
-        throw std::out_of_range("Invalid pokemeon index");
-    }
-
-    PokemonCard* pokemonCardPtr = actionCard[pokemonIndex];
-
     auto* energyCardPtr = dynamic_cast<EnergyCard*>(benchCard[cardIndex]);
 
     if (energyCardPtr == nullptr) {
         throw std::invalid_argument("Card is not a EnergyCard");
     }
+
+    PokemonCard* pokemonCardPtr = getPokemonCardPtr(pokemonIndex);
 
     if (energyCardPtr->getEnergyType() != pokemonCardPtr->getEnergyType()) {
         //std::cout << "energyType :" << energyCardPtr->getEnergyType() << std::endl;
@@ -87,4 +95,12 @@ void Player::attachEnergyCard(int cardIndex, int pokemonIndex) {
 
 }
 
+void Player::attack(int player1pokemonIndex, int attackIndex, Player player2, int player2pokemonIndex) {
 
+    PokemonCard* pokemonCardPtr = getPokemonCardPtr(player1pokemonIndex);
+
+    PokemonCard* pokemonCardPtr2 = player2.getPokemonCardPtr(player2pokemonIndex);
+
+    pokemonCardPtr->attack(attackIndex, pokemonCardPtr2);
+
+}

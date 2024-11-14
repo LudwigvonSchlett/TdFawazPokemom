@@ -24,13 +24,19 @@ PokemonCard::PokemonCard(std::string _cardName, std::string _pokemonType, std::s
 }
 
 void PokemonCard::displayInfo() const {
-    std::cout << "Pokemon Card : -- ";
-    std::cout << "Pokemon name : " << cardName;
-    std::cout << ", Type : " << pokemonType;
-    std::cout << ", Evolution Level : " << evolutionLevel;
-    std::cout << " of the family \"" << familyName << "\"";
-    std::cout << ", HP : " << hp << "/" << maxHP;
-    //std::cout << energy << std::endl;
+    std::cout << "Pokemon Card : -- " << "Pokemon name : " << cardName << ", Type : " << pokemonType
+                << ", Evolution Level : " << evolutionLevel << " of the family \"" << familyName << "\""
+                << ", HP : " << hp << "/" << maxHP << ", Energy : " << energy << std::endl;
+
+    std::cout << "Attacks:" << std::endl;
+
+    for (size_t i = 0; i < attacks.size(); ++i) {
+        std::cout << "Attack #" << (i + 1) << ":" << std::endl;
+        std::cout << "  Cost: " << std::get<0>(attacks[i]) << std::endl;
+        std::cout << "  Description: " << std::get<1>(attacks[i]) << std::endl;
+        std::cout << "  Damage: " << std::get<2>(attacks[i]) << std::endl;
+    }
+
 }
 
 void PokemonCard::addEnergy() {
@@ -40,3 +46,21 @@ void PokemonCard::addEnergy() {
 std::string PokemonCard::getEnergyType() const {
     return  pokemonType;
 }
+
+void PokemonCard::attack(int attackIndex, PokemonCard* pokemonCard) {
+
+    if (attackIndex > attacks.size()) {
+        throw std::out_of_range("Invalid attack index");
+    }
+
+    std::tuple<int,std::string,int> attack = attacks[attackIndex];
+
+    if (std::get<0>(attack) > energy) {
+        throw std::invalid_argument("Pokemon doesn't have enough energy");
+    }
+
+    pokemonCard->hp -= std::get<2>(attack);
+
+}
+
+

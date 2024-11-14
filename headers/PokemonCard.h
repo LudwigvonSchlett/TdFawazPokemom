@@ -21,7 +21,7 @@ class PokemonCard: public Card {
 
         void addEnergy();
         std::string getEnergyType() const;
-
+        void attack(int attackIndex, PokemonCard* pokemonCard);
 
     private:
         const std::string pokemonType;

@@ -19,9 +19,12 @@ class Player {
         void displayBench() const;
         void displayAction() const;
 
+        PokemonCard* getPokemonCardPtr(int pokemonIndex);
+
         void addCardToBench(Card* cardPtr);
         void activatePokemonCard(int cardIndex);
         void attachEnergyCard(int cardIndex, int pokemonIndex);
+        void attack(int player1pokemonIndex, int attackIndex, Player player2, int player2pokemonIndex);
 
     private:
         const std::string playerName;
