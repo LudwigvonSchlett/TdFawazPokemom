@@ -4,10 +4,13 @@
 
 #include "../headers/Player.h"
 #include "../headers/EnergyCard.h"
+#include "../headers/TrainerCard.h"
 
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
+
+using Attack = std::tuple<int, std::string, int>;
 
 Player::Player(std::string _playerName):
     playerName(_playerName)
@@ -95,12 +98,61 @@ void Player::attachEnergyCard(int cardIndex, int pokemonIndex) {
 
 }
 
+void Player::useTrainer(int cardIndex) {
+
+    if (cardIndex < 0 || cardIndex >= benchCard.size()) {
+        throw std::out_of_range("Invalid card index");
+    }
+
+    auto* trainerCardPtr = dynamic_cast<TrainerCard*>(benchCard[cardIndex]);
+
+    if (trainerCardPtr == nullptr) {
+        throw std::invalid_argument("Card is not a TrainerCard");
+    }
+
+    std::string cardEffect = trainerCardPtr->getTrainerEffect();
+
+    std::cout << playerName << " is using the Trainer Card : " << trainerCardPtr->getCardName() << "'s effect to : "
+            << cardEffect << std::endl;
+
+    if (cardEffect == "heal all your action pokemon") {
+        effectHealAll();
+    }
+
+}
+
+
 void Player::attack(int player1pokemonIndex, int attackIndex, Player player2, int player2pokemonIndex) {
 
     PokemonCard* pokemonCardPtr = getPokemonCardPtr(player1pokemonIndex);
 
     PokemonCard* pokemonCardPtr2 = player2.getPokemonCardPtr(player2pokemonIndex);
 
-    pokemonCardPtr->attack(attackIndex, pokemonCardPtr2);
+    Attack attack = pokemonCardPtr2->getAttack(attackIndex);
+
+    if (std::get<0>(attack) > pokemonCardPtr->getEnergy()) {
+        throw std::invalid_argument("Pokemon doesn't have enough energy");
+    }
+
+    int remainingHp = pokemonCardPtr2->getHp() - std::get<2>(attack);
+
+    pokemonCardPtr2->setHp(remainingHp);
+
+    std::cout << playerName << " attacking " << player2.playerName << "'s Pokemon " << pokemonCardPtr2->getCardName()
+        << " with the Pokemon " << pokemonCardPtr->getCardName() << " with its attack : " << std::get<1>(attack) << std::endl;
+
+    //pokemonCardPtr->attack(attackIndex, pokemonCardPtr2);
 
 }
+
+void Player::effectHealAll() {
+
+    for (unsigned int i = 0; i < actionCard.size(); ++i) {
+
+        PokemonCard* pokemonCardPtr = getPokemonCardPtr(i);
+        pokemonCardPtr->setHp(pokemonCardPtr->getMaxHp());
+
+    }
+
+}
+

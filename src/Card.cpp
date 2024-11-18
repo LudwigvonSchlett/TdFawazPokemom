@@ -9,3 +9,9 @@ Card::Card(std::string _cardName) :
 {
 
 }
+
+std::string Card::getCardName() const {
+
+    return cardName;
+
+}

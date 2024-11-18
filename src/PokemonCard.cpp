@@ -32,7 +32,7 @@ void PokemonCard::displayInfo() const {
 
     std::cout << "Attacks:" << std::endl;
 
-    for (size_t i = 0; i < attacks.size(); ++i) {
+    for (unsigned int i = 0; i < attacks.size(); ++i) {
         std::cout << "Attack #" << (i + 1) << ":" << std::endl;
         std::cout << "  Cost: " << std::get<0>(attacks[i]) << std::endl;
         std::cout << "  Description: " << std::get<1>(attacks[i]) << std::endl;
@@ -49,6 +49,8 @@ std::string PokemonCard::getEnergyType() const {
     return  pokemonType;
 }
 
+/*
+
 void PokemonCard::attack(int attackIndex, PokemonCard* pokemonCard) {
 
     if (attackIndex > attacks.size()) {
@@ -62,6 +64,43 @@ void PokemonCard::attack(int attackIndex, PokemonCard* pokemonCard) {
     }
 
     pokemonCard->hp -= std::get<2>(attack);
+
+}
+
+*/
+
+Attack PokemonCard::getAttack(int attackIndex) {
+
+    if (attackIndex > attacks.size()) {
+        throw std::out_of_range("Invalid attack index");
+    }
+
+    return attacks[attackIndex];
+
+}
+
+int PokemonCard::getEnergy() const {
+
+    return energy;
+
+}
+
+int PokemonCard::getMaxHp() const {
+
+    return maxHP;
+
+}
+
+
+int PokemonCard::getHp() const {
+
+    return hp;
+
+}
+
+void PokemonCard::setHp(int _hp) {
+
+    hp = _hp;
 
 }
 

@@ -4,6 +4,7 @@
 
 #ifndef CARD_H
 #define CARD_H
+
 #include <string>
 
 
@@ -14,12 +15,11 @@ class Card {
         virtual ~Card() = default;
 
         virtual void displayInfo() const = 0;
+        std::string getCardName() const;
 
     protected:
         const std::string cardName;
 
 };
-
-
 
 #endif //CARD_H

@@ -20,3 +20,9 @@ void TrainerCard::displayInfo() const {
     std::cout << ", Effect : " << trainerEffect;
 }
 
+std::string TrainerCard::getTrainerEffect() const {
+
+    return trainerEffect;
+
+}
+

@@ -4,6 +4,7 @@
 
 #ifndef POKEMONCARD_H
 #define POKEMONCARD_H
+
 #include <vector>
 
 #include "Card.h"
@@ -23,7 +24,13 @@ class PokemonCard: public Card {
 
         void addEnergy();
         std::string getEnergyType() const;
-        void attack(int attackIndex, PokemonCard* pokemonCard);
+        //void attack(int attackIndex, PokemonCard* pokemonCard);
+        Attack getAttack(int attackIndex);
+        int getEnergy() const;
+        int getMaxHp() const;
+        int getHp() const;
+        void setHp(int _hp);
+
 
     private:
         const std::string pokemonType;

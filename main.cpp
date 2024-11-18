@@ -61,6 +61,9 @@ int main() {
     player1.attack(0 , 0, player2, 0);
     cout << endl;
     player2.displayAction();
+    player2.useTrainer(0);
+    cout << endl;
+    player2.displayAction();
 
     return 0;
 }

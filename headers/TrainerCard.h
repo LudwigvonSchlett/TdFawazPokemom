@@ -4,6 +4,7 @@
 
 #ifndef TRAINERCARD_H
 #define TRAINERCARD_H
+
 #include "Card.h"
 
 
@@ -14,6 +15,8 @@ class TrainerCard: public Card {
         ~TrainerCard() = default;
 
         void displayInfo() const override;
+
+        std::string getTrainerEffect() const;
 
     private:
         const std::string trainerEffect;
