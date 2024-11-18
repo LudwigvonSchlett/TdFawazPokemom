@@ -6,10 +6,11 @@
 
 #include <iostream>
 #include <ostream>
+#include <utility>
 
-TrainerCard::TrainerCard(std::string _cardName, std::string _trainerEffect):
+TrainerCard::TrainerCard(const std::string &_cardName, std::string _trainerEffect):
     Card(_cardName),
-    trainerEffect(_trainerEffect)
+    trainerEffect(std::move(_trainerEffect))
 {
 
 }

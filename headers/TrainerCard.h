@@ -11,7 +11,7 @@
 class TrainerCard: public Card {
 
     public:
-        TrainerCard(std::string _cardName, std::string _trainerEffect);
+        TrainerCard(const std::string &_cardName, std::string _trainerEffect);
         ~TrainerCard() = default;
 
         void displayInfo() const override;

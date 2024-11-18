@@ -4,8 +4,10 @@
 
 #include "../headers/Card.h"
 
+#include <utility>
+
 Card::Card(std::string _cardName) :
-    cardName(_cardName)
+    cardName(std::move(_cardName))
 {
 
 }

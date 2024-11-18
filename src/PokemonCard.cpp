@@ -6,15 +6,16 @@
 
 #include <iostream>
 #include <ostream>
+#include <utility>
 
 using Attack = std::tuple<int, std::string, int>;
 
-PokemonCard::PokemonCard(std::string _cardName, std::string _pokemonType, std::string _familyName, int _evolutionLevel, int _maxHP,
-                         int _costAttack1, std::string _attackDesc1, int _attackDamage1,
-                         int _costAttack2, std::string _attackDesc2, int _attackDamage2):
+PokemonCard::PokemonCard(const std::string &_cardName, std::string _pokemonType, std::string _familyName, int _evolutionLevel, int _maxHP,
+                         int _costAttack1, const std::string& _attackDesc1, int _attackDamage1,
+                         int _costAttack2, const std::string& _attackDesc2, int _attackDamage2):
     Card((_cardName)),
-    pokemonType(_pokemonType),
-    familyName(_familyName),
+    pokemonType(std::move(_pokemonType)),
+    familyName(std::move(_familyName)),
     evolutionLevel(_evolutionLevel),
     maxHP(_maxHP),
     hp(_maxHP),

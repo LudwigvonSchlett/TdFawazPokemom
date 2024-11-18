@@ -9,11 +9,12 @@
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
+#include <utility>
 
 using Attack = std::tuple<int, std::string, int>;
 
 Player::Player(std::string _playerName):
-    playerName(_playerName)
+    playerName(std::move(_playerName))
 {
 
 }
