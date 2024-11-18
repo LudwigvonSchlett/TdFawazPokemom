@@ -40,7 +40,7 @@ void Player::displayAction() const {
 
 }
 
-PokemonCard *Player::getPokemonCardPtr( int pokemonIndex) {
+PokemonCard *Player::getPokemonCardPtr(int pokemonIndex) {
 
     if (pokemonIndex < 0 || pokemonIndex >= actionCard.size()) {
         throw std::out_of_range("Invalid pokemeon index");
@@ -71,6 +71,9 @@ void Player::activatePokemonCard(int cardIndex) {
 
     actionCard.push_back(pokemonCardPtr);
     benchCard.erase(benchCard.begin() + cardIndex);
+
+    std::cout << playerName << " is activating a Pokemon Card " << pokemonCardPtr->getCardName() << std::endl;
+
 }
 
 void Player::attachEnergyCard(int cardIndex, int pokemonIndex) {
@@ -95,6 +98,9 @@ void Player::attachEnergyCard(int cardIndex, int pokemonIndex) {
     pokemonCardPtr->addEnergy();
 
     benchCard.erase(benchCard.begin() + cardIndex);
+
+    std::cout << playerName << " is attaching the Energy Card of type " << energyCardPtr->getEnergyType() << " to the Pokemon "
+            << pokemonCardPtr->getCardName() << std::endl;
 
 }
 
@@ -128,7 +134,7 @@ void Player::attack(int player1pokemonIndex, int attackIndex, Player player2, in
 
     PokemonCard* pokemonCardPtr2 = player2.getPokemonCardPtr(player2pokemonIndex);
 
-    Attack attack = pokemonCardPtr2->getAttack(attackIndex);
+    Attack attack = pokemonCardPtr->getAttack(attackIndex);
 
     if (std::get<0>(attack) > pokemonCardPtr->getEnergy()) {
         throw std::invalid_argument("Pokemon doesn't have enough energy");
@@ -140,6 +146,15 @@ void Player::attack(int player1pokemonIndex, int attackIndex, Player player2, in
 
     std::cout << playerName << " attacking " << player2.playerName << "'s Pokemon " << pokemonCardPtr2->getCardName()
         << " with the Pokemon " << pokemonCardPtr->getCardName() << " with its attack : " << std::get<1>(attack) << std::endl;
+
+    std::cout << "Reducing " << player2.playerName << "'s Pokemon's HP by " << std::get<2>(attack) << std::endl;
+
+    if (pokemonCardPtr2->getHp() > 0) {
+        std::cout << "Pokemon " << pokemonCardPtr2->getCardName() << " is still alive" << std::endl;
+    }
+    else {
+        std::cout << "Pokemon " << pokemonCardPtr2->getCardName() << " has fainted" << std::endl;
+    }
 
     //pokemonCardPtr->attack(attackIndex, pokemonCardPtr2);
 
