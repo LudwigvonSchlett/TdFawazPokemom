@@ -7,6 +7,9 @@
 
 #include "Card.h"
 
+#include <iostream>
+#include <ostream>
+#include <utility>
 
 class TrainerCard: public Card {
 

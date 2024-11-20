@@ -4,10 +4,6 @@
 
 #include "../headers/PokemonCard.h"
 
-#include <iostream>
-#include <ostream>
-#include <utility>
-
 using Attack = std::tuple<int, std::string, int>;
 
 PokemonCard::PokemonCard(const std::string &_cardName, std::string _pokemonType, std::string _familyName, int _evolutionLevel, int _maxHP,

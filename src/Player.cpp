@@ -3,13 +3,6 @@
 //
 
 #include "../headers/Player.h"
-#include "../headers/EnergyCard.h"
-#include "../headers/TrainerCard.h"
-
-#include <iostream>
-#include <ostream>
-#include <stdexcept>
-#include <utility>
 
 using Attack = std::tuple<int, std::string, int>;
 

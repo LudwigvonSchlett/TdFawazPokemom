@@ -6,6 +6,9 @@
 #define POKEMONCARD_H
 
 #include <vector>
+#include <iostream>
+#include <ostream>
+#include <utility>
 
 #include "Card.h"
 

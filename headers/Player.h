@@ -7,9 +7,15 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
+#include <ostream>
+#include <stdexcept>
+#include <utility>
 
 #include "Card.h"
 #include "PokemonCard.h"
+#include "EnergyCard.h"
+#include "TrainerCard.h"
 
 
 class Player {

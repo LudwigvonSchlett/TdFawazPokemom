@@ -4,10 +4,6 @@
 
 #include "../headers/TrainerCard.h"
 
-#include <iostream>
-#include <ostream>
-#include <utility>
-
 TrainerCard::TrainerCard(const std::string &_cardName, std::string _trainerEffect):
     Card(_cardName),
     trainerEffect(std::move(_trainerEffect))
